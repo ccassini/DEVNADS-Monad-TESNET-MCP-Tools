@@ -19,8 +19,10 @@ const publicClient = createPublicClient({
     transport: http(),
 });
 
-const PRIVATE_KEY = "0x55f06ef0b162f094c7c55fcc29750f902fb6b0ca09fa3a0d26ad459def3c8ca0";
-const senderAccount = privateKeyToAccount(PRIVATE_KEY);
+// Private key should be provided through environment variables or a secure configuration
+// This is a placeholder - NEVER hardcode private keys in production code
+const PRIVATE_KEY = process.env.PRIVATE_KEY || "YOUR_PRIVATE_KEY_HERE";
+const senderAccount = privateKeyToAccount(PRIVATE_KEY as `0x${string}`);
 const walletClient = createWalletClient({
     account: senderAccount,
     chain: monadTestnet,

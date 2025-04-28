@@ -1,94 +1,77 @@
-# Monad MCP Server
+# Monad Tesnet MCP Server  Advanced Blockchain Toolkit 
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](VERSION)
 
-A Model Context Protocol (MCP) server for interacting with the Monad blockchain testnet. This server enables AI assistants to perform various operations on the Monad network, including checking balances, getting network information, and executing transactions.
+A Model Context Protocol server for interacting with the Monad blockchain testnet.
 
 ## Features
 
-- **Wallet Balance Checking**: Get MON token balances for any address
-- **Network Information**: Retrieve current Monad testnet stats
-- **Transaction Details**: Look up transaction information by hash
-- **Token Transfers**: Send MON tokens between addresses
-- **Staking**: Interact with staking contracts
-- **Token Swaps**: Swap MON for other tokens through DEX integrations
-
-## Prerequisites
-
-- Node.js (v16 or higher)
-- npm or yarn
-- Access to Monad testnet
+- Wallet balance checking
+- Network information
+- Transaction details
+- Token transfers and swaps
+- Staking capabilities
 
 ## Installation
 
 ```bash
-# Clone the repository
 git clone https://github.com/your-username/monad-mcp-server.git
 cd monad-mcp-server
-
-# Install dependencies
 npm install
 ```
 
-## Configuration
+## Security & Configuration
 
-Before running the server, you may need to set up a private key for transactions:
+For security reasons, private keys are handled via environment variables. Before running the server:
 
-```typescript
-// Update the PRIVATE_KEY in src/index.ts
-const PRIVATE_KEY = "your-private-key-here";
+```bash
+# Linux/Mac
+export PRIVATE_KEY=your_private_key_here
+
+# Windows
+set PRIVATE_KEY=your_private_key_here
 ```
+
+NEVER hardcode private keys in your source code or commit them to your repository.
 
 ## Usage
 
 ```bash
-# Build the project
 npm run build
-
-# Start the server
 npm start
 ```
 
-## Model Context Protocol Integration
+## Claude Integration
 
-This server implements the Model Context Protocol (MCP) standard, allowing AI assistants to interact with the Monad blockchain directly. It exposes several tools:
-
-- `check-wallet-balances`: Get MON balance for an address
-- `monad-network-info`: Get information about the Monad network
-- `transaction-details`: Get details about a transaction
-- `transfer-mon`: Transfer MON tokens to another address
-- `stake-apriori-mon`: Stake tokens in the Apriori protocol
-- `swap-mon-for-tokens`: Swap MON for other tokens via DEX
-
-## Development
-
-```bash
-# Run in development mode
-npm run build && npm start
+```json
+{
+  "mcpServers": {
+    "monad-mcp": {
+      "command": "node",
+      "args": [
+        "/path/to/your/project/build/index.js"
+      ]
+    }
+  }
+}
 ```
 
-## Project Structure
+## MCP Tools
 
-```
-monad-mcp-server/
-├── build/            # Compiled JavaScript files
-├── src/              # TypeScript source code
-│   └── index.ts      # Main server implementation
-├── package.json      # Project dependencies and scripts
-└── tsconfig.json     # TypeScript configuration
-```
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
+- `check-wallet-balances`: Get MON balances
+- `monad-network-info`: Network information
+- `transaction-details`: Transaction data
+- `transfer-mon`: Transfer tokens
+- `stake-apriori-mon`: Staking operations
+- `swap-mon-for-tokens`: DEX swaps
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+MIT License
 
 ## Acknowledgments
 
-- [Model Context Protocol](https://github.com/modelcontextprotocol/mcp) for the server framework
-- [Monad Blockchain](https://monad.xyz/) for the testnet infrastructure
-- [Viem](https://viem.sh/) for Ethereum/Monad interaction utilities 
+- [Model Context Protocol](https://github.com/modelcontextprotocol/mcp)
+- [Monad Blockchain](https://monad.xyz/)
+- [Viem](https://viem.sh/)
